@@ -2,8 +2,9 @@ module github.com/disaipe/dev01-pcmon-daemon
 
 go 1.20
 
+require github.com/disaipe/dev01-rpc-base v1.0.7
+
 require (
-	github.com/disaipe/dev01-rpc-base v1.0.7 // indirect
 	github.com/kardianos/service v1.2.1 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
