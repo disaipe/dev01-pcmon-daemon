@@ -53,7 +53,13 @@ func GetComputerState(hosts []string) ([]ComputerStatusItem, error) {
 	cmd.Dir = rpc.Config.GetWorkingDir()
 
 	out, err := cmd.CombinedOutput()
-	monitor
+
+	if err != nil {
+		return nil, err
+	} else {
+		cleanOut := regexp.MustCompile(`([^\pL\pM\pN\pP\pS\s]|\r\n)`).ReplaceAllLiteralString(string(out), "")
+		err = json.Unmarshal([]byte(cleanOut), &computerStatusItems)
+
 		if err != nil {
 			return nil, err
 		}
